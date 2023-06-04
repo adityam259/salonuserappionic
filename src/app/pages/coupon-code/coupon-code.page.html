@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Coupon Code</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-card class="cardClass" *ngFor="let item of couponData">
+    <img alt="Silhouette of mountains" src="{{item.imageUploadDirectory}}" />
+    <ion-card-content>
+      <div class="coupon">
+        <div class="code">
+          <h2 [innerHTML]="item.description"></h2>
+          <p class="text"></p>
+          <button class="copy-button" (click)="copyCode(item.couponCode)">Copy Code {{item.couponCode}}</button>
+        </div>
+        <!--<div class="image"></div>-->
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  
+</ion-content>

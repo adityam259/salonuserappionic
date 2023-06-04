@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Categories</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="logo-whatsapp" size="large" (click)="whatsapp()"
+        style="padding-right: 10px; width: 20px; height: 20px;color: green;"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="card shadow"
+    style="height: 100%;border-bottom: none  ;background-color: white; border-color: rgb(144, 144, 144);margin-left: 5px;margin-right: 10px;">
+    <div class="card-header text-center" style="background-color: white;font-size: medium;font-weight: bold;">Shop By
+      Category</div>
+    <div class="grid-container" style="padding-top: 10px;">
+      <div class="grid-item" *ngFor="let item of listOfCategory" style="border: thick  gray;justify-content: center;">
+        <ion-img class="ion-text-center"
+          src="{{item.imageUploadDirectory }}" (click)="rowClickedForCategory(item.id,'category')"
+          width="111.66px" height="98.45px"  
+          style="width: 91.66px !important; height: 98.45px !important;
+          object-fit: cover !important;
+                 border-radius: 100% !important; overflow: hidden;">
+        </ion-img>
+        <br>
+        <h6 style="text-align: center;font-weight: bold;height: 10px;">{{item.categoryName}}</h6>
+      </div>
+    </div>
+  </div>
+</ion-content>

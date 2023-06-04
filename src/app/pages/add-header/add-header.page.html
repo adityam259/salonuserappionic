@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Header</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title></ion-card-title>
+      <ion-card-subtitle></ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form (ngSubmit)="onSubmit()">
+        <ion-item lines="full">
+          <label for="fileButton" class="custom-file-upload">
+            <ion-icon name="attach"></ion-icon>
+            Upload a Header Image
+          </label>
+          <input type="file" name="headerImage" id="fileButton" (change)="onFileSelected($event)" required hidden>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Title</ion-label>
+          <ion-input type="text" name="title" [(ngModel)]="formData.title" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Rate</ion-label>
+          <ion-input type="text" name="rate" [(ngModel)]="formData.rate" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Time</ion-label>
+          <ion-input type="text" name="time" [(ngModel)]="formData.time" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea name="description" [(ngModel)]="formData.description"></ion-textarea>
+        </ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

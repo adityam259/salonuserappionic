@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Gift Vouchers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  
+  <ion-card class="cardClass" *ngFor="let item of listOfData">
+    <img src="{{item.imageUploadDirectory}}" />
+    <ion-card-content>
+      <div class="coupon">
+        <div class="code">
+          <h2>{{item.giftTitle}}</h2>
+          <p class="text" [innerHTML]="item.description"></p>
+          <button class="copy-button" style="width: 100%;height: 30px;border-radius: 5px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);background-color: coral;color: aliceblue;" (click)="buyNow(item.id)">Buy Now</button>
+        </div>
+        <!--<div class="image"></div>-->
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+

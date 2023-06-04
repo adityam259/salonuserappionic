@@ -1,0 +1,48 @@
+ion-card {
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  
+  .coupon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .code {
+    flex: 1;
+  }
+  
+  .highlight {
+    color: #007bff;
+  }
+  
+  .text {
+    margin: 10px 0;
+  }
+  
+  .copy-button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .image {
+    width: 100px;
+    height: 100px;
+    background-color: #007bff;
+    border-radius: 50%;
+  }
+  
+  .cardClass{
+    padding: 10px;
+  }

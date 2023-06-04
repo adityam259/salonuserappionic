@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content>
+    <ion-slides [options]="slideOptions">
+      <ion-slides #slides autoplay="true" delay="2000" pager="true">
+        <ion-slide *ngIf="imageUploadDirectory!=''">
+          <!--imageUploadDirectory-->
+          <img src="{{imageUploadDirectory}}" width="375px" height="196.25px"
+            style="width: 375px !important; height: 196.25px !important;">
+        </ion-slide>
+
+        <ion-slide *ngIf="imageUploadDirectory2!=''">
+          <!--imageUploadDirectory-->
+          <img src="{{imageUploadDirectory2}}" width="375px" height="196.25px"
+            style="width: 375px !important; height: 196.25px !important;">
+        </ion-slide>
+
+        <ion-slide *ngIf="imageUploadDirectory3!=''">
+          <!--imageUploadDirectory-->
+          <img src="{{imageUploadDirectory3}}" width="375px" height="196.25px"
+            style="width: 375px !important; height: 196.25px !important;">
+        </ion-slide>
+
+        <ion-slide *ngIf="imageUploadDirectory4!=''">
+          <!--imageUploadDirectory-->
+          <img src="{{imageUploadDirectory4}}" width="375px" height="196.25px"
+            style="width: 375px !important; height: 196.25px !important;">
+        </ion-slide>
+
+        <ion-slide *ngIf="imageUploadDirectory5!=''">
+          <!--imageUploadDirectory-->
+          <img src="{{imageUploadDirectory5}}" width="375px" height="196.25px"
+            style="width: 375px !important; height: 196.25px !important;">
+        </ion-slide>
+
+      </ion-slides>
+
+    </ion-slides>
+
+    <ion-item *ngIf="description!=''">
+      <ion-label><b>Description</b></ion-label>
+    </ion-item>
+    <ion-item *ngIf="description!=''">
+      <ion-textarea [innerHTML]="description"></ion-textarea><br>
+    </ion-item>
+    <ion-item *ngIf="brand!=''">
+      <ion-label><b>Brand</b></ion-label><br>
+    </ion-item>
+    <ion-item *ngIf="brand!=''">
+      <ion-textarea [innerHTML]="brand"></ion-textarea>
+    </ion-item>
+
+    <ion-item *ngIf="serviceTime!=''">
+      <ion-label><b>Service Time</b></ion-label><br>
+    </ion-item>
+    <ion-item *ngIf="serviceTime!=''">
+      <ion-textarea [innerHTML]="serviceTime"></ion-textarea>
+    </ion-item>
+
+    <ion-item *ngIf="price!=''">
+      <ion-label><b>Price In ₹</b></ion-label><br>
+    </ion-item>
+    <ion-item *ngIf="price!=''">
+      <ion-textarea [innerHTML]="price"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="full" (click)="addToCart(product)">Add to Cart</ion-button>
+  </ion-content>
+</ion-content>

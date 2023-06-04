@@ -1,0 +1,47 @@
+<!--
+  Authors : bunchdevelopers (Rahul Jograna)
+  Website : https://bunchdevelopers.com/
+  App Name : ionic6Template Pack
+  This App Template Source code is licensed as per the
+  terms found in the Website https://bunchdevelopers.com/license
+  Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
+ -->
+<ion-content>
+
+  <img src="assets/banner.jpg">
+  <div class="main-content">
+
+
+    <div class="card">
+      <div class="logo">
+        <ion-label class="logo-name">HEY</ion-label>
+        <ion-label class="logo-info">KUDY</ion-label>
+        <ion-label class="logo-info">Login</ion-label>
+      </div>
+      <div class="title">
+        <ion-label>Sign in with Mobile </ion-label>
+      </div>
+      <div class="text">
+        <ion-label>We will send one time password for into login</ion-label>
+      </div>
+      <form (ngSubmit)="verifyMobile()" #myForm="ngForm">
+      <ion-item class="textbox" lines="none">
+        <img class="img" src="assets/india.png">
+        <ion-label>|</ion-label>
+        <ion-input type="number" class="ion-no-padding"  [(ngModel)]="formData.phoneNo" 
+        name="phoneNo"  maxlength="10"></ion-input>
+      </ion-item>
+      <span class="center"> {{message}}</span>
+      <div class="form-group">
+        <div class="container">
+          <button class="btn btn-primary" type="submit">Get OTP</button>
+        </div>
+    </div>
+    </form>
+    <div class="text">
+      <ion-label>New User! <a (click)="redirectToRegister()">Click here to register.</a></ion-label>
+    </div>
+    </div>
+  </div>
+</ion-content>
+

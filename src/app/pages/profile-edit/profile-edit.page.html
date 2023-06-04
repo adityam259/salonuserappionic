@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar style="--background: #fff; /* set background color to white */
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* add a shadow */">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="container" style="background-color: hsla(0, 0%, 91%, 0.467);">
+    <div class="row" style="background-color: hsla(0, 0%, 91%, 0.467);padding-top: 15px">
+      <br>
+      <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+        <div class="form-group">
+          <span class="input-group-addon" id="basic-addon1" style="margin-bottom: 5px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">First Name</span>
+          <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="formData.firstName"
+            name="firstName" aria-describedby="basic-addon1" style="margin-top: 5px; height: 50px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        </div>
+        <br>
+        <div class="form-group">
+          <span class="input-group-addon" id="basic-addon1" style="margin-bottom: 5px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Last Name</span>
+          <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="formData.lastName"
+            name="lastName"  aria-describedby="basic-addon1" style="margin-top: 5px; height: 50px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+          </div>
+        <br>
+        <div class="form-group">
+          <span class="input-group-addon" id="basic-addon1" style="margin-bottom: 5px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Mobile Number</span>
+          <input  type="number" class="form-control" placeholder="Mobile Number" [(ngModel)]="formData.phoneNo"
+            name="phoneNo" maxlength="10" readonly="true"
+            style="background-color: hsla(0, 0%, 91%, 0.467);margin-top: 5px; height: 50px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        </div>
+        <br>
+        <div class="form-group">
+          <span class="input-group-addon" id="basic-addon1" style="margin-bottom: 5px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Email Id</span>
+          <input type="text" class="form-control" placeholder="Email Id" [(ngModel)]="formData.emailId"
+            name="emailId" readonly="true"
+            style="background-color: hsla(0, 0%, 91%, 0.467);margin-top: 5px; height: 50px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        </div>
+        <br>
+        <div class="form-group">
+          <span class="input-group-addon" id="basic-addon1" style="margin-bottom: 5px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Birthday</span>
+          <input type="date" class="form-control" placeholder="20-08-1992" 
+          [(ngModel)]="formData.dob"
+            name="dob" maxlength="10"   style="margin-top: 5px; height: 50px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+          </div>
+        <br>
+        <div class="form-group">
+          <span class="input-group-addon" id="basic-addon1" style="margin-bottom: 5px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Date of Anniversary</span>
+          <input type="date" class="form-control" placeholder="20-08-1992" 
+          [(ngModel)]="formData.dateOfAnniversary"
+            name="dateOfAnniversary" maxlength="10" style="margin-top: 5px; height: 50px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+          </div>
+        <br>
+        <div class="form-group">
+          <span class="input-group-addon" id="basic-addon1" style="margin-bottom: 5px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Alternate Mobile Number</span>
+          <input type="number" class="form-control" placeholder="Alternate Mobile Number" [(ngModel)]="formData.alternatephoneNo"
+          name="alternatephoneNo" maxlength="10" style="margin-top: 5px; height: 50px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        </div>
+      <br>
+        <span class="center"> </span>
+        <div class="form-group">
+          <button class="btn btn-primary" expand="block" type="submit" style="width: 100% ;margin-top: 5px; height: 50px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+            PROCEED
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</ion-content>

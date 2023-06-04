@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>checkout</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Name:</ion-label>
+        <ion-input type="text">{{formData.firstName}} {{formData.lastName}}</ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Email:</ion-label>
+        <ion-input type="email">{{formData.emailId}}</ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mobile No:</ion-label>
+        <ion-input type="text">{{formData.phoneNo}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Address:</ion-label>
+        <ion-textarea>{{formData.address}}</ion-textarea>
+      </ion-item>
+
+
+    </ion-list>
+  </ion-card>
+  <ion-card style="background-color: bisque;border-color: rgb(250, 143, 12);">
+    <ion-card-content>
+      <ion-label></ion-label>
+      <p [innerHTML]="cancelationDeatils"></p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-item>
+      <ion-label>Select Date</ion-label>
+    </ion-item>
+    <br>
+    <ion-datetime displayFormat="DD.MM.YYYY" presentation="date" [(ngModel)]="selectedDate"
+      style="background-color: white;"></ion-datetime>
+  </ion-card>
+  <ion-card>
+    <ion-item>
+      <ion-label>Time</ion-label>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let timeSlot of timeSlots">
+          <button  [ngStyle]="{'background-color': isTimeSlotBooked(timeSlot) ? '#e27171' : '',
+          'color': isTimeSlotBooked(timeSlot) ? 'white' : '',
+          'background-color.clicked': selectedTime === timeSlot ? 'green' : ''
+        }"
+          [disabled]="isTimeSlotBooked(timeSlot)"
+          ion-button (click)="selectTime(timeSlot)"
+          [class.clicked]="selectedTime === timeSlot"
+            style="width: 100%;height: 30px;border-radius: 5px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);"> {{ timeSlot }}</button>
+
+        </ion-col>
+        
+      </ion-row>
+      <!-- Add more rows and columns for other time slots -->
+    </ion-grid>
+
+  </ion-card>
+  <ion-card>
+    <ion-item>
+      <ion-label>Payment Method:</ion-label>
+      <ion-select (ionChange)="onPaymentMethodChange($event.target.value)">
+        <!--<ion-select-option value="credit-card">Credit Card</ion-select-option>-->
+        <ion-select-option value="cod">COD</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-label>Products :</ion-label>
+      <ul>
+        <li *ngFor="let item of cartItems; let i = index">
+          {{ i + 1 }}. &nbsp; {{ item.title }}
+        </li>
+      </ul>
+      <table style="width:100%">
+        <tr>
+          <td style="text-align: left;font-weight: bold;color: black;"> Grand Total : </td>
+          <td style="text-align: right;font-weight: bold;color: black;"> &#x20b9; {{total}} </td>
+        </tr>
+      </table>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" color="primary" (click)="placeOrder()">Place Order</ion-button>
+</ion-content>

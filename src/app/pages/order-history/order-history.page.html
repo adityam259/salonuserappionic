@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="main-content" style="width: 100%;">
+    <div class="switch-buttons" style="width: 100%;">
+      <button ion-button (click)="showOngoingOrders()" style="width: 50%;height: 40px; font-weight: bold;">Ongoing Orders</button>
+      <button ion-button (click)="showPastOrders()" style="width: 50%;height: 40px;font-weight: bold;">Past Orders</button>
+    </div>
+
+    <ion-row *ngIf="currentOrders === 'ongoing'">
+      <div class="main-content" *ngIf="listOfHeadersPending!=null">
+        <div *ngFor="let item of listOfHeadersPending" class="bookings">
+          <ion-row style="padding-bottom: 10px; border-bottom: 1px solid lightgray;">
+            <ion-col size="4">
+              <img src="{{item.frontEndBase64 }}"/>
+            </ion-col>
+            <ion-col size="8">
+              <table class="order-details-table">
+                <tr>
+                  <td><b>Title:</b></td>
+                  <td>&nbsp;{{ item.title }}</td>
+                </tr>
+                <tr>
+                  <td><b>Order Id:</b></td>
+                  <td>&nbsp;{{ item.orderTrackingId }}</td>
+                </tr>
+                <tr>
+                  <td><b>Amount:</b></td>
+                  <td>&nbsp;<b>&#8377;</b>{{ item.totalAmount }}</td>
+                </tr>
+                <tr>
+                  <td><b>Quantity:</b></td>
+                  <td>&nbsp; {{ item.quantity }}</td>
+                </tr>
+                <tr *ngIf="item.status === 'pending'">
+                  <td><b>Status:</b></td>
+                  <td>&nbsp;<b style="color: blue;">Pending</b></td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="order-again-cell">
+                  <!--  <button ion-button color="primary" (click)="orderAgain(item)">Order Again</button>
+                    -->
+                  </td>
+                </tr>
+              </table>
+            </ion-col>
+          </ion-row>   
+        </div>
+      </div>
+      <div class="main-content" *ngIf="listOfHeadersPending === null || listOfHeadersPending.length === 0">
+        <h5 style="position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);">No Orders Avaialble</h5>
+      </div>
+    </ion-row>
+
+    <ion-row *ngIf="currentOrders === 'past'">
+      <div class="main-content" *ngIf="listOfHeadersCompleted!=null">
+        <div *ngFor="let item of listOfHeadersCompleted" class="bookings">
+          <ion-row style="padding-bottom: 10px; border-bottom: 1px solid lightgray;">
+            <ion-col size="4">
+              <img src="{{item.frontEndBase64 }}"/>
+            </ion-col>
+            <ion-col size="8">
+              <table class="order-details-table">
+                <tr>
+                  <td><b>Title:</b></td>
+                  <td>&nbsp;{{ item.title }}</td>
+                </tr>
+                <tr>
+                  <td><b>Order Id:</b></td>
+                  <td>&nbsp;{{ item.orderTrackingId }}</td>
+                </tr>
+                <tr>
+                  <td><b>Amount:</b></td>
+                  <td>&nbsp;<b>&#8377;</b>{{ item.totalAmount }}</td>
+                </tr>
+                <tr>
+                  <td><b>Quantity:</b></td>
+                  <td>&nbsp; {{ item.quantity }}</td>
+                </tr>
+                <tr *ngIf="item.status === 'completed'">
+                  <td><b>Status:</b></td>
+                  <td>&nbsp;<b style="color: blue;">Completed</b></td>
+                </tr>
+              </table>
+            </ion-col>
+          </ion-row>   
+        </div>
+      </div>
+      <div class="main-content" *ngIf="listOfHeadersCompleted === null || listOfHeadersCompleted.length === 0">
+        <h5 style="position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);">No Orders Avaialble</h5>
+      </div>
+    </ion-row>
+
+    <div class="main-content" *ngIf="listOfHeadersPending === null || listOfHeadersPending.length === 0">
+      {{ message }}
+    </div>
+
+    
+  </div>
+</ion-content>

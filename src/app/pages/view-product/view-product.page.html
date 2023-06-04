@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Product</ion-title>
+    <ion-buttons slot="end" (click)="goToCart()" style="padding-right: 15px;">
+      <ion-icon name="cart"></ion-icon>
+      <ion-badge color="danger" *ngIf="cartBadge!=0">{{cartBadge}}</ion-badge>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="scroll-container">
+    <div class="button-container">
+      <ion-button *ngFor="let button of buttons" shape="round"  style="--background: #a91f06;"  (click)="getClickedCatgegory(button)"><strong>{{ button }}</strong></ion-button>
+    </div>
+  </div>
+  
+  <ion-card>
+    <img src="{{product.imageUploadDirectory}}">
+    <ion-card-header>
+      <ion-card-title>{{product.title }}</ion-card-title>
+      <ion-card-subtitle>&#x20b9; {{product.price }} &nbsp; &#x20b9; <strong style="text-decoration: line-through;"> {{product.originalPrice }}</strong></ion-card-subtitle>
+      <ion-card-subtitle><span class="clock"></span> {{product.time }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content  [innerHTML]="product.description">
+    </ion-card-content>
+    <ion-button expand="block" (click)="addToCart(product)">Add to Cart</ion-button>
+  </ion-card>
+</ion-content>

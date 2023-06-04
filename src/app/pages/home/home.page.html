@@ -1,0 +1,192 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="location" slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </div>
+    <div>
+      <ion-label class="text" (click)="openCitySelect()"
+        style="font-weight: bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> <ion-icon
+          name="location"></ion-icon> &nbsp; <span style="min-width: 100px; display: inline-block;">{{ currentAddress
+          }}</span></ion-label>
+    </div>
+    <ion-buttons slot="end" (click)="goToCart()" size="large"  style="padding-right: 15px;color: black;">
+      <ion-icon name="cart" class="black-cart-icon"></ion-icon>
+      <ion-badge color="danger" *ngIf="cartBadge!=0">{{cartBadge}}</ion-badge>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon name="logo-whatsapp" size="large" (click)="whatsapp()"
+        style="padding-right: 10px; width: 20px; height: 20px;"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main-content">
+    <div class="heading">
+      <div class="wish">
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" style="height:40px;background-color: rgb(255, 255, 255);"><i
+              class="fa fa-search"></i></span>
+        </div>
+        <input type="search" class="form-control" placeholder="Search for salon services etc" [(ngModel)]="searchTerm"
+          (keyup)="onSearch($event)" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+      </div>
+      <div style="position: relative">
+        <ul class="list-group" style="position: absolute; z-index: 10; width: 100%;">
+          <li class="list-group-item" *ngFor="let item of searchData" (click)="selectItem(item.id,item.source)">{{
+            item.title }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card shadow"
+      style="background-color: white; border-color: rgb(144, 144, 144);margin-left: 5px;margin-right: 10px;">
+      <div class="card-body">
+        <ion-grid>
+          <ion-row>
+            <ion-slides #slides autoplay="true" delay="2000" pager="true">
+              <ion-slide *ngFor="let item of listOfHeader">
+                <!--imageUploadDirectory-->
+                <img src="{{item.imageUploadDirectory}}" (click)="rowClicked(item.id,'header')" width="375px"
+                  height="196.25px" style="width: 375px !important; height: 196.25px !important;">
+              </ion-slide>
+            </ion-slides>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+    <div class="card shadow"
+      style="background-color: white; border-color: rgb(144, 144, 144);margin-left: 5px;margin-right: 10px;">
+      <div class="card-header text-center" style="background-color: white;font-size: medium;font-weight: bold;">Shop By
+        Category</div>
+      <div class="card-body">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4" *ngFor="let item of listOfCategory">
+              <ion-img src="{{item.imageUploadDirectory}}" (click)="rowClickedForCategory(item.id,'category')" style="width: 91.66px !important; height: 98.45px !important;
+                     object-fit: cover !important;
+                            border-radius: 100% !important; overflow: hidden;"></ion-img>
+              <br>
+              <h6 style="text-align: center;font-weight: bold;height: 25px;">{{item.categoryName}}</h6>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </div>
+    </div>
+
+    <div class="card shadow"
+      style="background-color: white; border-color: rgb(144, 144, 144);margin-left: 5px;margin-right: 10px;">
+      <div class="card-header text-center" style="background-color: white;font-size: medium;font-weight: bold;">
+        Wondering how Heykudi works?
+      </div>
+      <div class="card-body">
+        <ion-grid>
+          <ion-row>
+            <ion-slides pager="true">
+              <ion-slide *ngFor="let url of listOfYouLinks">
+                <iframe width="375px" height="196.25px"
+                  [src]="sanitizeUrl('https://www.youtube.com/embed/' + url?.youtubeLink)" title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </ion-slide>
+            </ion-slides>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+    <div class="card shadow"
+      style="background-color: white; border-color: rgb(144, 144, 144);margin-left: 5px;margin-right: 10px;">
+      <div class="card-header text-center" style="background-color: white;font-size: medium;font-weight: bold;">
+        Best Selling packages
+      </div>
+      <div class="card-body">
+        <ion-grid>
+          <ion-row>
+            <ion-slides #slides autoplay="true" delay="2000" pager="true">
+              <ion-slide *ngFor="let item of listOfProduct">
+                <img src="{{item.imageUploadDirectory}}" (click)="rowClicked(item.id,'product')" width="375px"
+                  height="196.25px" style="width: 375px !important; height: 196.25px !important;">
+              </ion-slide>
+            </ion-slides>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+  <div class="card shadow"
+    style="background-color: white; border-color: rgb(144, 144, 144);margin-left: 5px;margin-right: 10px;">
+    <div class="card-header text-center" style="background-color: white;font-size: medium;font-weight: bold;">
+      Trusted Products and Brands Used By Us
+    </div>
+    <div class="card-body">
+      <ion-grid>
+        <ion-row>
+          <ion-img src="{{listOfTrusted}}"></ion-img>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div class="card shadow"
+      style="background-color: white; border-color: rgb(144, 144, 144);margin-left: 5px;margin-right: 10px;">
+      <div class="card-header text-center" style="background-color: white;font-size: medium;font-weight: bold;">
+        Blog
+      </div>
+      <div class="card-body">
+        <ion-grid>
+          <ion-row>
+            <ion-list>
+              <ion-item *ngFor="let blog of listBlog" style="width: 300px">
+                <ion-label>
+                  <ion-img src="{{blog.imageUploadDirectory}}"></ion-img>
+                  <h2>{{ blog.blogTitle }}</h2>
+                  <p [innerHTML]="blog.description" style="white-space: pre-wrap;"></p>
+                </ion-label>
+              </ion-item>
+            </ion-list> </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+    <div class="card shadow"
+      style="background-color: white; border-color: rgb(144, 144, 144);margin-left: 5px;margin-right: 10px;">
+      <div class="card-header text-center" style="background-color: white;font-size: medium;font-weight: bold;">
+        What do our customers have to say?
+      </div>
+      <div class="card-body">
+        <ion-grid>
+          <ion-row>
+            <ion-list>
+              <ion-card *ngFor="let review of listOfReview" style="width: 300px">
+                <ion-item>
+                  <ion-label>
+                    <h2>{{ review.name }}</h2>
+                    <div>
+                      <ion-icon *ngIf="review.rating >= 1" name="star"></ion-icon>
+                      <ion-icon *ngIf="review.rating >= 2" name="star"></ion-icon>
+                      <ion-icon *ngIf="review.rating >= 3" name="star"></ion-icon>
+                      <ion-icon *ngIf="review.rating >= 4" name="star"></ion-icon>
+                      <ion-icon *ngIf="review.rating >= 5" name="star"></ion-icon>
+                    </div>
+                    <div [innerHTML]="review.review" style="white-space: pre-wrap;">
+                    </div>
+                  </ion-label>
+                </ion-item>
+              </ion-card>
+
+            </ion-list> </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</ion-content>

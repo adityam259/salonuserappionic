@@ -1,0 +1,8 @@
+{
+  "name": "salon2",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

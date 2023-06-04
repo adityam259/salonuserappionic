@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+    <ion-title>
+      Select a Address
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addAddress()">ADD</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-list>
+      <ion-item *ngFor="let city of cities" style="width: 100%;">
+        <ion-card style="width: 100%;">
+          <ion-card-content>
+            {{ city.name }}
+          </ion-card-content>
+          <ion-item lines="none">
+            <ion-checkbox slot="start" (click)="selectCity(city)"
+              [checked]="defaultAddress === city.name"></ion-checkbox>
+            <ion-label>Set As Default</ion-label>
+          </ion-item>
+        </ion-card>
+      </ion-item>
+
+
+    </ion-list>
+
+
+  </ion-grid>
+</ion-content>

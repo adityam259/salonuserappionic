@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>List Employee</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="main-content">
+
+    <div *ngFor="let item of listOfHeaders" class="bookings">
+      <ion-row style="padding-bottom: 10px; border-bottom: 1px solid lightgray;" (click)="rowClicked(item.id)">
+        <ion-col size="12">
+          <ion-label class="salon-name" style="padding-left: 20px;" >Name: {{ item.firstName }} {{ item.lastName }}</ion-label><br>
+          <ion-label class="salon-name" style="padding-left: 20px;" >User Name:{{ item.userName }}</ion-label><br>
+          <ion-label class="salon-name" style="padding-left: 20px;" >Type:{{ item.type }}</ion-label>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Employee / User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title></ion-card-title>
+      <ion-card-subtitle></ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form (ngSubmit)="onSubmit()">
+        <ion-item lines="full">
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input type="text" name="firstName" [(ngModel)]="formData.firstName" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input type="text" name="lastName" [(ngModel)]="formData.lastName" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Address</ion-label>
+          <ion-input type="text" name="address" [(ngModel)]="formData.address" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">User Name</ion-label>
+          <ion-input type="text" name="userName" [(ngModel)]="formData.userName" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">password</ion-label>
+          <ion-input type="passsword" name="password" [(ngModel)]="formData.password" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Email Id</ion-label>
+          <ion-input type="text" name="emailId" [(ngModel)]="formData.emailId" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Mobile No.</ion-label>
+          <ion-input type="text" name="phoneNo" [(ngModel)]="formData.phoneNo" required></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Gender</ion-label>
+          <ion-select [(ngModel)]="formData.gender" name="gender" required>
+            <ion-select-option [value]="male">Male</ion-select-option>
+            <ion-select-option [value]="feMale">FeMale</ion-select-option>
+          </ion-select>        
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Type</ion-label>
+          <ion-select [(ngModel)]="formData.type" name="type" required>
+            <ion-select-option [value]="employee">Employee</ion-select-option>
+            <ion-select-option [value]="user">User</ion-select-option>
+          </ion-select>        
+        </ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

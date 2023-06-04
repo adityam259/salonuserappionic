@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login-phone"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+ <ion-content>
+
+ 
+  <div class="main-content">
+
+
+    <div class="card">
+      <div class="text">
+        <ion-label></ion-label>
+      </div>
+      <form (ngSubmit)="verifyMobile()" #myForm="ngForm">
+      <ion-item class="textbox" lines="full">
+        <ion-label position="floating">Mobile Number</ion-label>
+        <ion-input type="number" class="ion-no-padding" placeholder="Mobile Number"  [(ngModel)]="formData.phoneNo" 
+        name="phoneNo"  maxlength="10"></ion-input>
+      </ion-item>
+      <ion-item class="textbox" lines="full">
+        <ion-label position="floating">User Name</ion-label>
+        <ion-input type="text" class="ion-no-padding" placeholder="User Name"  
+        [(ngModel)]="formData.userName" 
+        name="userName" ></ion-input>
+      </ion-item>
+      <ion-item class="textbox" lines="full">
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input type="text" class="ion-no-padding" placeholder="First Name"  
+        [(ngModel)]="formData.firstName" 
+        name="firstName" ></ion-input>
+      </ion-item>
+      <ion-item class="textbox" lines="full">
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input type="text" class="ion-no-padding" placeholder="Last Name"  
+        [(ngModel)]="formData.lastName" 
+        name="lastName" ></ion-input>
+      </ion-item>
+      <ion-item class="textbox" lines="full">
+        <ion-label position="floating">Email Id</ion-label>
+        <ion-input type="text" class="ion-no-padding" placeholder="Email Id"  
+        [(ngModel)]="formData.emailId" 
+        name="emailId" ></ion-input>
+      </ion-item>
+      <ion-item class="textbox" lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="text" class="ion-no-padding" placeholder="Password"  
+        [(ngModel)]="formData.password" 
+        name="password" ></ion-input>
+      </ion-item>
+      <ion-item class="textbox" lines="full">
+        <ion-label position="floating">Address</ion-label>
+        <ion-input type="text" class="ion-no-padding" placeholder="Address"  
+        [(ngModel)]="formData.address" 
+        name="address" ></ion-input>
+      </ion-item>
+      <ion-item class="textbox" lines="full">
+        <ion-label position="floating">Gender</ion-label>
+        <ion-select [(ngModel)]="formData.gender" name="gender" placeholder="Select your gender" required>
+          <ion-select-option [value]="male">Male</ion-select-option>
+          <ion-select-option [value]="female">Female</ion-select-option>
+        </ion-select>        
+      </ion-item>
+      <span class="center"> </span>
+      <div class="form-group" style="width: 100%;">
+        <div class="container" style="width: 100%;">
+          <button class="btn btn-primary" type="submit" style="width: 100%;">Register</button>
+        </div>
+    </div>
+    </form>
+    <div class="text">
+      <ion-label>Existing User! <a (click)="redirectToLogin()">Click here to login.</a></ion-label>
+    </div>
+    </div>
+  </div>
+</ion-content>
+

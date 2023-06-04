@@ -1,0 +1,15 @@
+ion-content {
+    --background: #e27171;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container img {
+    max-width: 100%;
+    height: auto;
+    width: 40%;
+    margin-top: 70px;
+}

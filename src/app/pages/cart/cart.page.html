@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Your Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="cartItems.length != 0">
+  <ion-card *ngFor="let item of cartItems">
+    <ion-card-header>
+      <ion-card-title>{{ item.title }}</ion-card-title>
+      <ion-card-subtitle>{{ item.title }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <table style="width: 100%;">
+              <tr>
+                <td>Amount</td>
+                <td style="text-align: right;"><b>&#x20b9;{{ item.price }}</b></td>
+              </tr>
+              <tr>
+                <td>Quantity</td>
+                <td style="text-align: right;">
+                  <ion-buttons>
+                    <ion-button (click)="decrementQuantity(item)">
+                      <ion-icon name="remove-circle-outline"></ion-icon>
+                    </ion-button>
+                    <ion-label>{{ item.quantity }}</ion-label>
+                    <ion-button (click)="incrementQuantity(item)">
+                      <ion-icon name="add-circle-outline"></ion-icon>
+                    </ion-button>
+                    <ion-button (click)="removeItem(item)">
+                      <ion-icon name="trash-outline"></ion-icon>
+                    </ion-button>
+                  </ion-buttons>
+                </td>
+              </tr>
+            </table>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-footer>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-label style="color: black;">Delivery instruction</ion-label> <br>
+        <div class="checkbox-wrapper">
+          <input type="checkbox" [(ngModel)]="isChecked" (change)="handleCheckboxChange($event.target.checked)">
+          <label style="font-size: small;"> &nbsp;&nbsp; {{deliveryInstructionData}}</label>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-card>
+      <ion-card-content>
+        <ion-label style="color: black;"></ion-label>
+        <img src="assets/discount.png" width="15px" height="15px">
+
+          <label style="font-size: small;"> &nbsp;&nbsp; Coupons & Offers </label>
+
+          <label style="font-size: small;float: right;"> &nbsp;&nbsp; {{coupounCount}} &nbsp; Offers &nbsp;
+            <img src="assets/skip-track.png" width="15px" height="15px" style="float: right;"
+            (click)="navigateToRoute()"></label>
+          
+
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="showAddCoupon">
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="9">
+              <ion-item>
+                <ion-input placeholder="Paste Coupon Code" [(ngModel)]="inputValueCoupon"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="3">
+              <ion-button color="danger" expand="block" (click)="apply()">Apply</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+
+    </ion-card>
+    <ion-row>
+      <ion-col>
+        <hr>
+        <ion-col size="12">
+          <ion-card>
+            <ion-card-content>
+              <table style="width:100%">
+                <tr>
+                  <td style="text-align: left;color: black;"> Subtotal : </td> <td style="text-align: right;color: black;"> &#x20b9; {{total}} </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;color: rgb(0, 0, 0);"> Membership Discount : </td> <td style="text-align: right;color: rgb(5, 217, 245);"> &#x20b9; {{membershipTotalDiscount}} </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;color: rgb(5, 217, 245);"> Discount : </td> <td style="text-align: right;color: rgb(5, 217, 245);"> &#x20b9; 0 </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;color: rgb(194, 39, 0);"> Coupon Discount : </td> <td style="text-align: right;color: rgb(194, 39, 0);"> &#x20b9; {{finalCouponValue}} </td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;font-weight: bold;color: black;"> Grand Total : </td> <td style="text-align: right;font-weight: bold;color: black;"> &#x20b9; {{total}} </td>
+                </tr>
+              </table>
+            </ion-card-content>
+          </ion-card>
+        <ion-card style="background-color: aquamarine;" *ngIf="amountSaved!=''">
+          <ion-card-content>
+            <ion-label style="color: black;"></ion-label>
+          <img src="assets/tag.png" width="20px" height="20px">
+          <label style="font-size: small;"> &nbsp;&nbsp; You have saved {{amountSaved}} on final bill </label>
+
+          </ion-card-content>
+        </ion-card>
+        <hr>
+        </ion-col>
+        <ion-button type="submit" color="danger" expand="block" (click)="goToCheckout()">Checkout</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-footer>
+</ion-content>
+
+<ion-content *ngIf="cartItems.length === 0">
+  <ion-card>
+    <ion-card-content>
+      Your cart is empty.
+    </ion-card-content>
+  </ion-card>
+</ion-content>

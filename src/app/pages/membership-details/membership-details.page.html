@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{heading}} Details</ion-title>
+    <ion-buttons slot="end" (click)="goToCart()" size="large"  style="padding-right: 15px;color: black;">
+      <ion-icon name="cart" class="black-cart-icon"></ion-icon>
+      <ion-badge color="danger" *ngIf="cartBadge!=0">{{cartBadge}}</ion-badge>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header style="text-align: center;background-color: #842029;">
+      <ion-card-title style="color:white">{{heading}}</ion-card-title>
+      <ion-card-subtitle></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item style="text-align: center;width: 100%;">
+          <ion-label
+            style="display: flex; justify-content: center; align-items: center; text-align: center; width: 100%;"
+            [innerHTML]="description"></ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <div style="text-align: center;">
+        <h6 style="font-size: 20px;font-weight: bold;">Terms & Conditions</h6>
+      </div>
+      <br>
+      <p style="text-align: justify;" [innerHTML]="termsConditions"></p>
+
+    </ion-card-content>
+  </ion-card>
+
+  <div style="display: flex; justify-content: center;">
+    <ion-button (click)="onSubmitBecomeMember(id)">
+      Become Member
+    </ion-button>
+  </div>
+<br>
+</ion-content>

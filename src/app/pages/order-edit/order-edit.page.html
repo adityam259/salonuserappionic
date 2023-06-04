@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Order</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title></ion-card-title>
+      <ion-card-subtitle></ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form (ngSubmit)="onSubmit()">
+        <ion-item lines="full">
+          <ion-label position="floating">Order Tracking Id</ion-label>
+          <ion-input type="text" name="orderTrackingId" [(ngModel)]="formData.orderTrackingId" disabled></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Select Employee</ion-label>
+          <ion-select name="userId" [(ngModel)]="userId">
+            <ion-select-option *ngFor="let option of listOfUser" [value]="option.id">
+              {{option.userName}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating">Status</ion-label>
+          <ion-select [(ngModel)]="formData.status" name="status" required>
+            <ion-select-option [value]="pending">pending</ion-select-option>
+            <ion-select-option [value]="completed">completed</ion-select-option>
+          </ion-select>        
+        </ion-item>
+ 
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

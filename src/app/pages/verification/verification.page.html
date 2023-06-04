@@ -1,0 +1,58 @@
+<!--
+  Authors : bunchdevelopers (Rahul Jograna)
+  Website : https://bunchdevelopers.com/
+  App Name : ionic6Template Pack
+  This App Template Source code is licensed as per the
+  terms found in the Website https://bunchdevelopers.com/license
+  Copyright and Good Faith Purchasers © 2021-present bunchdevelopers.
+ -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goToBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div class="main-content">
+    <!-- <div class="icon">
+      <ion-icon name="arrow-back-outline" (click)="goToBack()"></ion-icon>
+    </div> -->
+
+    <div class="logo">
+      <ion-label class="logo-name">HEY</ion-label>
+      <ion-label class="logo-info">KUDY</ion-label>
+    </div>
+    <div class="title">
+      <ion-label>OTP Verification </ion-label>
+    </div>
+
+    <div class="text">
+      <ion-label>Enter the OTP sent to <span class="spc">{{mobileNo}}</span></ion-label>
+    </div>
+    <form  (ngSubmit)="goToHome()" #myForm="ngForm">
+    <div class="verify">
+      <ion-input type="number" maxLength="4" size="4" min="0" max="9" 
+      [(ngModel)]="formData.verificationCode" 
+      name="verificationCode" ></ion-input>
+    </div>
+    <span class="center"> {{message}} </span>
+    <div class="form-group">
+      <div class="container">
+        <button class="btn btn-primary" type="submit">Verify to Proceed</button>
+      </div>
+  </div>
+   
+  </form>
+    <div class="text">
+      <ion-label>Dont Recieve the OTP? <span class="spc">Resend</span></ion-label>
+    </div>
+   
+    <img src="../../../assets/info.png" aria-label="Information" (click)="presentAlert()" id="info-image">
+
+  
+  </div>
+</ion-content>
